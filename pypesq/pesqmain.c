@@ -117,7 +117,7 @@ void usage (void);
 float compute_pesq(short * ref, short * deg, long ref_n_samples, long deg_n_samples, long fs) {
     int  names = 0;
     long sample_rate = fs;
-    
+    float pesq_score;
     SIGNAL_INFO ref_info;
     SIGNAL_INFO deg_info;
     ERROR_INFO err_info;
@@ -137,7 +137,7 @@ float compute_pesq(short * ref, short * deg, long ref_n_samples, long deg_n_samp
     select_rate (sample_rate, &Error_Flag, &Error_Type);
     pesq_measure (&ref_info, &deg_info, &err_info, &Error_Flag, &Error_Type, ref, deg, ref_n_samples, deg_n_samples, fs);
 
-    float pesq_score = err_info.pesq_mos;
+    pesq_score = err_info.pesq_mos;
     return pesq_score;
 }
 
