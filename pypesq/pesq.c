@@ -52,14 +52,11 @@ static PyObject *_pesq(PyObject *self, PyObject *args){
 
     PyArrayObject *ref, *deg;
     long fs;
-
+    float pesq;
     if(!PyArg_ParseTuple(args, "O!O!l", &PyArray_Type, &ref,
         &PyArray_Type, &deg, &fs)){
         return NULL;
     }
-
-    float pesq;
     pesq = compute_pesq(ref->data, deg->data, ref->dimensions[0], deg->dimensions[0], fs);
-
     return Py_BuildValue("f", pesq);
 }
