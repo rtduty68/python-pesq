@@ -200,7 +200,7 @@ void load_src( long * Error_Flag, char ** Error_Type,
     char s;
     float *read_ptr;
     short *p_input;
-
+    int i;
     Fs = fs;
     Nsamples = n_samples;
     sinfo-> Nsamples = Nsamples + 2 * SEARCHBUFFER * Downsample;
@@ -222,7 +222,7 @@ void load_src( long * Error_Flag, char ** Error_Type,
     for( read_count = SEARCHBUFFER*Downsample; read_count > 0; read_count-- )
       *(read_ptr++) = 0.0f;
 
-    int i = Nsamples;
+    i = Nsamples;
     while(i--){
         *(read_ptr++) = (float)(*(p_input++));
     }
